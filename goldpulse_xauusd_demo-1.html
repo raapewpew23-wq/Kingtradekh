@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="km">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090c">
+<title>GoldPulse | XAUUSD Terminal</title>
+<style>
+:root{--bg:#08090c;--panel:#111318;--panel2:#171920;--line:#272a33;--text:#f3f4f6;--muted:#9296a3;--gold:#d8b84f;--green:#19d887;--red:#ff5c70;--blue:#64c8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:78px}
+button,select{font:inherit}button{cursor:pointer}.wrap{max-width:980px;margin:auto}.top{padding:16px 16px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:850;letter-spacing:.3px}.brand b{color:var(--gold)}.sub{color:var(--muted);font-size:12px;margin-top:4px}.pill{font-size:11px;border:1px solid #6d5a20;color:var(--gold);padding:6px 9px;border-radius:20px;white-space:nowrap}.ticker{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:20px 16px;border-bottom:1px solid var(--line)}.symbol{font-weight:800;font-size:18px}.price{font-size:25px;font-weight:850;letter-spacing:-.7px;margin-top:4px}.change{font-size:13px;color:var(--green);font-weight:700}.status{font-size:11px;color:var(--gold);background:#272315;padding:6px 8px;border-radius:7px;margin-top:8px;display:inline-block}.content{padding:14px;display:grid;gap:14px}.tabs{display:flex;gap:7px;overflow:auto;padding-bottom:2px}.tabs button{border:1px solid var(--line);background:#101116;color:var(--muted);padding:9px 13px;border-radius:10px;white-space:nowrap}.tabs button.active{background:#f5f5f5;color:#111;border-color:#f5f5f5;font-weight:750}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--panel2);color:var(--text);font-weight:750}.btn.primary{background:#f4f4f4;color:#111}.btn.gold{border-color:#67551f;color:var(--gold)}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px;min-width:0}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:13px}.cardhead h2{font-size:15px;margin:0}.muted{color:var(--muted)}.tiny{font-size:11px}.chartbox{height:220px;position:relative;overflow:hidden;border-radius:10px;background:linear-gradient(180deg,#101318,#0c0e12)}canvas{width:100%;height:100%;display:block}.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:9px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}.signal{border:1px solid #125e42;background:linear-gradient(135deg,#071b14,#0b1714);border-radius:16px;padding:17px}.signal.sell{border-color:#722b3a;background:linear-gradient(135deg,#211016,#151014)}.signaltitle{font-size:20px;font-weight:900;color:var(--green)}.signal.sell .signaltitle{color:var(--red)}.signal p{margin:8px 0 15px;color:#c3c7d0;font-size:13px;line-height:1.5}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.metric{background:#101217;border:1px solid #292c35;border-radius:12px;padding:11px;min-width:0}.metric label{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px}.metric strong{display:block;margin-top:7px;font-size:15px;overflow-wrap:anywhere}.metric small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rowitem{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.rowitem:last-child{border-bottom:0}.good{color:var(--green)}.bad{color:var(--red)}.note{font-size:11px;color:#b0a57d;line-height:1.5}.footer{position:fixed;bottom:0;left:0;right:0;background:#0c0d11;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:4;padding-bottom:env(safe-area-inset-bottom)}.nav{width:min(980px,100%);display:grid;grid-template-columns:repeat(5,1fr)}.nav button{border:0;background:transparent;color:var(--muted);padding:10px 2px 9px;font-size:10px}.nav button span{display:block;font-size:19px;margin-bottom:4px}.nav button.active{color:var(--gold)}.toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:#f4f4f4;color:#111;padding:10px 14px;border-radius:10px;font-size:12px;display:none;z-index:5;max-width:90%;text-align:center}.hidden{display:none!important}
+@media(min-width:720px){.content{grid-template-columns:1.2fr .8fr;align-items:start}.wide{grid-column:1/-1}.chartbox{height:300px}.ticker{padding:24px}.content{padding:20px}.price{font-size:30px}}
+@media(max-width:420px){.price{font-size:22px}.metrics{gap:6px}.metric{padding:9px}.metric strong{font-size:13px}.card{padding:13px}.chartbox{height:190px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><div class="brand">⚡ GOLD<b>PULSE</b> TERMINAL</div><div class="sub">XAUUSD • Trading dashboard demo</div></div><span class="pill">● DEMO MODE</span></header>
+<section class="ticker"><div><div class="symbol">XAUUSD <span class="muted">⌄</span></div><div class="price" id="price">$2,345.60 <span class="change" id="change">+0.18%</span></div><span class="status">● SIMULATED PRICE · NOT LIVE</span></div><div style="text-align:right"><div class="muted tiny">SESSION</div><strong id="clock">--:--:--</strong><div class="sub">Cambodia (UTC+7)</div></div></section>
+<main class="content">
+<section class="card wide">
+<div class="cardhead"><h2>Market chart <span class="muted">/ XAUUSD</span></h2><span class="tiny muted">Illustrative candles</span></div>
+<div class="tabs" id="timeframes"><button data-tf="1m">1m</button><button data-tf="5m">5m</button><button data-tf="15m" class="active">15m</button><button data-tf="30m">30m</button><button data-tf="1h">1h</button><button data-tf="4h">4h</button></div>
+<div class="chartbox"><canvas id="chart" aria-label="Illustrative candlestick chart"></canvas></div>
+<div class="legend"><span><i class="dot" style="background:#19d887"></i>Bullish</span><span><i class="dot" style="background:#ff5c70"></i>Bearish</span><span><i class="dot" style="background:#d8b84f"></i>EMA-style guide</span></div>
+</section>
+<section class="card">
+<div class="cardhead"><h2>AI analysis</h2><span class="pill">RULE-BASED DEMO</span></div>
+<div class="actions"><button class="btn" id="analyze">▥ Analyze</button><button class="btn primary" id="best">ϟ Best setup</button></div>
+<div style="height:12px"></div>
+<div class="rowitem"><span class="muted">Trend bias</span><strong id="trend" class="good">Bullish</strong></div>
+<div class="rowitem"><span class="muted">Momentum</span><strong id="momentum">Moderate</strong></div>
+<div class="rowitem"><span class="muted">Volatility</span><strong>Medium</strong></div>
+<div class="rowitem"><span class="muted">Risk profile</span><strong style="color:var(--gold)">Low (demo)</strong></div>
+<p class="note">នេះជាការវិភាគតាមទិន្នន័យសាកល្បងដែលបង្កើតក្នុង Browser ប៉ុណ្ណោះ។ មិនមែន AI ពិត ឬដំបូន្មានវិនិយោគទេ។</p>
+</section>
+<section class="signal" id="signal">
+<div class="cardhead"><span class="tiny" style="color:var(--gold)">ϟ SETUP PREVIEW</span><span class="pill" id="valid">VALID FOR 15:00</span></div>
+<div class="signaltitle" id="signalTitle">PLAN · BUY (DEMO)</div>
+<p id="signalText">Sample setup only. Wait for confirmation before considering any trade.</p>
+<div class="metrics">
+<div class="metric"><label>Entry</label><strong id="entry">2,345.60</strong><small>Illustrative</small></div>
+<div class="metric"><label>Stop loss</label><strong id="sl">2,338.60</strong><small>Demo level</small></div>
+<div class="metric"><label>Take profit</label><strong id="tp">2,359.60</strong><small>Demo level</small></div>
+</div>
+</section>
+<section class="card">
+<div class="cardhead"><h2>Signal details</h2><span class="tiny muted">DEMO</span></div>
+<div class="rowitem"><span class="muted">Timeframe</span><strong id="tfLabel">15 minutes</strong></div>
+<div class="rowitem"><span class="muted">Risk / reward</span><strong>1 : 2</strong></div>
+<div class="rowitem"><span class="muted">Confidence</span><strong id="confidence">62% (simulated)</strong></div>
+<div class="rowitem"><span class="muted">Last scan</span><strong id="lastScan">Just now</strong></div>
+</section>
+<section class="card">
+<div class="cardhead"><h2>Quick tools</h2></div>
+<div class="rowitem"><span class="muted">Session timer</span><strong id="timer">15:00</strong></div>
+<div class="rowitem"><span class="muted">Price source</span><strong>Local demo</strong></div>
+<button class="btn gold" style="width:100%;margin-top:12px" id="reset">↻ Reset demo</button>
+<p class="note">មិនមានការភ្ជាប់ Broker, API, ឬការដាក់បញ្ជាទិញពិតទេ។</p>
+</section>
+<section class="card wide">
+<div class="cardhead"><h2>Before trading</h2><span class="tiny muted">PLEASE READ</span></div>
+<p class="note">តម្លៃមាស និងសញ្ញា BUY/SELL នៅទីនេះគឺទិន្នន័យក្លែងធ្វើសម្រាប់រៀនបង្កើត Website។ មិនត្រូវប្រើវាសម្រាប់សម្រេចចិត្តជួញដូរពិតឡើយ។ ដើម្បីបម្លែងទៅជា Live Dashboard ត្រូវបន្ថែមប្រភពទិន្នន័យទីផ្សារដែលអាចទុកចិត្តបាន និង Backend សម្រាប់ API key។ AI មិនអាចធានាប្រាក់ចំណេញបានទេ។</p>
+</section>
+</main>
+</div>
+<nav class="footer"><div class="nav"><button class="active" data-nav="Overview"><span>▦</span>Overview</button><button data-nav="Terminal"><span>♧</span>Terminal</button><button data-nav="Generate"><span>ϟ</span>Generate</button><button data-nav="Signals"><span>▥</span>Signals</button><button data-nav="More"><span>•••</span>More</button></div></nav>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+let tf='15m', base=2345.60, remaining=900, candles=[];
+const tfNames={'1m':'1 minute','5m':'5 minutes','15m':'15 minutes','30m':'30 minutes','1h':'1 hour','4h':'4 hours'};
+function makeCandles(){let p=base; candles=[];for(let i=0;i<44;i++){let o=p,delta=(Math.random()-.47)*5,c=o+delta,h=Math.max(o,c)+Math.random()*2.5,l=Math.min(o,c)-Math.random()*2.5;candles.push({o,h,l,c});p=c}base=p;}
+function draw(){const c=$('chart'),ctx=c.getContext('2d'),r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=Math.max(1,r.width*dpr);c.height=Math.max(1,r.height*dpr);ctx.scale(dpr,dpr);let w=r.width,h=r.height;ctx.clearRect(0,0,w,h);let hi=Math.max(...candles.map(x=>x.h)),lo=Math.min(...candles.map(x=>x.l)),pad=15;let y=v=>pad+(hi-v)/(hi-lo||1)*(h-pad*2);ctx.strokeStyle='#242832';ctx.lineWidth=1;for(let i=1;i<5;i++){let yy=h*i/5;ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(w,yy);ctx.stroke()}let step=w/candles.length,bw=Math.max(3,step*.53);candles.forEach((v,i)=>{let x=i*step+step/2,up=v.c>=v.o;ctx.strokeStyle=up?'#19d887':'#ff5c70';ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(x,y(v.h));ctx.lineTo(x,y(v.l));ctx.stroke();let top=y(Math.max(v.o,v.c)),bottom=y(Math.min(v.o,v.c));ctx.fillRect(x-bw/2,top,bw,Math.max(1,bottom-top))});let last=candles[candles.length-1].c;ctx.setLineDash([4,4]);ctx.strokeStyle='#d8b84f';ctx.beginPath();ctx.moveTo(0,y(last));ctx.lineTo(w,y(last));ctx.stroke();ctx.setLineDash([])}
+function showToast(s){$('toast').textContent=s;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2300)}
+function analyze(best=false){let last=candles[candles.length-1],first=candles[0],bull=last.c>=first.o;let entry=last.c,dist=7; $('trend').textContent=bull?'Bullish':'Bearish';$('trend').className=bull?'good':'bad';$('momentum').textContent=Math.abs(last.c-first.o)>8?'Strong':'Moderate';$('signal').classList.toggle('sell',!bull);$('signalTitle').textContent='PLAN · '+(bull?'BUY':'SELL')+' (DEMO)';$('signalText').textContent=(bull?'Illustrative bullish bias':'Illustrative bearish bias')+' on '+tf+'. This is simulated chart logic, not an actual AI forecast or a trade recommendation.';$('entry').textContent=entry.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});$('sl').textContent=(entry+(bull?-dist:dist)).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});$('tp').textContent=(entry+(bull?dist*2:-dist*2)).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});$('confidence').textContent=(55+Math.floor(Math.random()*17))+'% (simulated)';$('lastScan').textContent=new Date().toLocaleTimeString();remaining=900;showToast(best?'Demo setup refreshed':'Demo analysis refreshed')}
+$('analyze').onclick=()=>analyze();$('best').onclick=()=>analyze(true);$('reset').onclick=()=>{base=2345.60;makeCandles();draw();analyze();showToast('Demo reset')};
+document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{tf=b.dataset.tf;document.querySelectorAll('[data-tf]').forEach(x=>x.classList.toggle('active',x===b));$('tfLabel').textContent=tfNames[tf];makeCandles();draw();analyze()});
+document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x===b));let n=b.dataset.nav;if(n==='Generate')analyze(true);else if(n==='Signals')$('signal').scrollIntoView({behavior:'smooth',block:'center'});else if(n==='Terminal')$('chart').scrollIntoView({behavior:'smooth',block:'center'});else if(n==='More')showToast('Demo version: no broker connection');else window.scrollTo({top:0,behavior:'smooth'})});
+function tick(){let now=new Date();$('clock').textContent=now.toLocaleTimeString('en-GB',{timeZone:'Asia/Phnom_Penh'});remaining=Math.max(0,remaining-1);$('timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');$('valid').textContent='VALID FOR '+$('timer').textContent;if(remaining===0)showToast('Demo timer expired. Refresh setup to restart.')}
+makeCandles();draw();analyze();tick();setInterval(tick,1000);window.addEventListener('resize',draw);
+</script>
+</body></html>
